@@ -10,6 +10,8 @@
 
 **中文** · [English](./README.en.md)
 
+本Fork新增：**中文 / English / Español / 日本語** 排盘入口 `/zh`、`/en`、`/es`、`/ja`。详见[多语言运行与交接](./docs/multilingual-handoff.md)及[全球免费/升级版规划](./docs/global-product-plan.md)。新增界面不包含作者商业站的AI、会员或支付服务。
+
 </div>
 
 **一、项目理念**：紫微斗数是中国传统命理学的瑰宝，倪海厦老师在《天纪》中系统梳理了正宗的紫微斗数体系。我们希望通过技术手段让更多人接触和学习这门学问。
