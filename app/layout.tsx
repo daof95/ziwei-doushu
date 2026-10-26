@@ -4,6 +4,8 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { SITE_URL } from '@/lib/site';
+import { InternationalProvider } from '@/components/i18n/InternationalProvider';
+import LegacyLanguages from '@/components/i18n/LegacyLanguages';
 
 export const metadata: Metadata = {
   title: '紫微命盘 · 倪海厦正宗紫微斗数',
@@ -44,7 +46,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="min-h-screen">
         <ThemeProvider>
-          {children}
+          <InternationalProvider>
+            <LegacyLanguages />
+            {children}
+          </InternationalProvider>
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />

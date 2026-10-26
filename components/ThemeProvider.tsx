@@ -17,20 +17,21 @@ function getInitialTheme(): Theme {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  // The server and first client render must match. The head bootstrap already
+  // applies the saved palette to <html>; restore React state after hydration.
+  const [theme, setTheme] = useState<Theme>('dark');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const saved = localStorage.getItem('ziwei-theme') as Theme | null;
-    if (saved === 'light' || saved === 'dark') setTheme(saved);
+    setTheme(getInitialTheme());
   }, []);
 
   useEffect(() => {
     if (!mounted) return;
     const root = document.documentElement;
     root.setAttribute('data-theme', theme);
-    localStorage.setItem('ziwei-theme', theme);
+    try { localStorage.setItem('ziwei-theme', theme); } catch { /* Storage can be disabled; the theme still works for this visit. */ }
   }, [theme, mounted]);
 
   const toggle = () => {

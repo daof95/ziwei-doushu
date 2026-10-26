@@ -11,6 +11,7 @@ import type { MetadataRoute } from 'next';
 import { ALL_BOOKS } from '@/lib/classics';
 import { getAllKnowledgeRoutes } from '@/lib/seo/knowledge';
 import { SITE_URL } from '@/lib/site';
+import { LOCALES, LANGUAGE_TAGS } from '@/lib/i18n/locales';
 
 const BASE_URL = SITE_URL;
 
@@ -52,5 +53,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: lastmod,
   }));
 
-  return [...staticPages, ...libraryPages, ...knowledgePages];
+  const internationalPages: MetadataRoute.Sitemap = LOCALES.map(locale => ({
+    url: `${BASE_URL}/${locale}`, priority: 0.95, changeFrequency: 'weekly',
+    alternates: { languages: Object.fromEntries(LOCALES.map(l => [LANGUAGE_TAGS[l], `${BASE_URL}/${l}`])) },
+  }));
+  return [...staticPages, ...internationalPages, ...libraryPages, ...knowledgePages];
 }

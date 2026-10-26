@@ -10,6 +10,8 @@
 
 [中文](./README.md) · **English**
 
+This fork adds Chinese, English, Spanish and Japanese charting at `/zh`, `/en`, `/es`, `/ja`. See the [implementation handoff](./docs/multilingual-handoff.md) and [global product plan](./docs/global-product-plan.md) (Chinese). The author's commercial AI, membership and payment services are not included.
+
 </div>
 
 **1. Philosophy:** Zi Wei Dou Shu is a treasure of traditional Chinese astrology, and Ni Haixia laid out its authentic system in *Tian Ji* (《天纪》). We hope technology can bring more people to learn it.
